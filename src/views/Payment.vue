@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 
 import CreditData from '@/components/CreditData.vue';
 import Resume from '@/components/Resume.vue';
@@ -25,7 +25,7 @@ export default {
     Button,
   },
   computed: {
-    ...mapGetters('Payment', ['disable']),
+    ...mapState('Payment', ['disable']),
   },
   methods: {
     goNext() {

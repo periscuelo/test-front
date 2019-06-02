@@ -51,14 +51,14 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 import Title from '@/components/Title.vue';
 
 export default {
   name: 'Products',
   components: { Title },
   computed: {
-    ...mapGetters('Cart', ['products']),
+    ...mapState('Cart', ['products']),
   },
 };
 </script>

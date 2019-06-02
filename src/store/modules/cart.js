@@ -1,11 +1,13 @@
 import { CHANGE_CART_PRODUCTS, CHANGE_CART_RESUME } from '../mutations-types';
+import MockService from '@/services/mock';
 
 const actions = {
-  setCartData({ commit }, obj) {
-    commit(CHANGE_CART_PRODUCTS, obj.items);
-    delete obj.id;
-    delete obj.items;
-    commit(CHANGE_CART_RESUME, obj);
+  async getData({ commit }) {
+    const response = await MockService.getData({ data: '5b15c4923100004a006f3c07' });
+    commit(CHANGE_CART_PRODUCTS, response.data.items);
+    delete response.data.id;
+    delete response.data.items;
+    commit(CHANGE_CART_RESUME, response.data);
   },
 };
 
@@ -18,11 +20,6 @@ const mutations = {
   },
 };
 
-const getters = {
-  products: state => state.products,
-  resume: state => state.resume,
-};
-
 const state = {
   products: [],
   resume: {},
@@ -30,8 +27,7 @@ const state = {
 
 export default {
   namespaced: true,
-  state,
   actions,
   mutations,
-  getters,
+  state,
 };

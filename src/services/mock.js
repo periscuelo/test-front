@@ -1,7 +1,5 @@
-import Api from '@/services/api';
+import Api from './api';
 
 export default {
-  getData(params) {
-    return Api().get(`/${params.data}`);
-  },
+  getData: params => Api().get(`/${params.data}`),
 };

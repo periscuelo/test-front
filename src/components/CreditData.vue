@@ -89,7 +89,7 @@
 import { validationMixin } from 'vuelidate';
 import { required, minLength } from 'vuelidate/lib/validators';
 import { mapFields } from 'vuex-map-fields';
-import { mapActions } from 'vuex';
+import { mapMutations } from 'vuex';
 import { mask } from 'vue-the-mask';
 import Title from '@/components/Title.vue';
 
@@ -127,7 +127,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions('Payment', ['setDisable']),
+    ...mapMutations('Payment', { setDisable: 'CHANGE_PAY_DISABLE' }),
   },
 };
 </script>

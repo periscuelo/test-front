@@ -11,7 +11,6 @@
 
 <script>
 import { mapActions } from 'vuex';
-import MockService from '@/services/mock';
 
 import Products from '@/components/Products.vue';
 import Resume from '@/components/Resume.vue';
@@ -24,15 +23,11 @@ export default {
     Resume,
     Button,
   },
-  mounted() {
+  created() {
     this.getData();
   },
   methods: {
-    ...mapActions('Cart', ['setCartData']),
-    async getData() {
-      const response = await MockService.getData({ data: '5b15c4923100004a006f3c07' });
-      this.setCartData(response.data);
-    },
+    ...mapActions('Cart', ['getData']),
     goNext() {
       this.$router.push('payment');
     },
